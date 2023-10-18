@@ -1,92 +1,76 @@
+using System.Collections.Specialized;
+using System.Numerics;
+
 namespace mg1
 {
-    partial class Form1
+
+    public partial class Form1 : Form
     {
-        /// <summary>
-        ///  Required designer variable.
-        /// </summary>
-        private System.ComponentModel.IContainer components = null;
-
-        /// <summary>
-        ///  Clean up any resources being used.
-        /// </summary>
-        /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
-        protected override void Dispose(bool disposing)
+        int[] tab = {7,6,5,3,2,1};
+        public Form1()
         {
-            if (disposing && (components != null))
+            InitializeComponent();
+        }
+
+        public void button1_Click(object sender, EventArgs e)
+        {
+            int liczbaN =(int)liczba_n.Value;
+            //long wynik = Fib2(liczbaN);
+            MessageBox.Show(wypisz(tab));
+        }
+        static int[] sortuj(int[] tab)
+        {
+            int n = tab.Length;
+
+            for (int i = 0; i < n - 1; i++)
+                for (int j = 0; j < n - i - 1; j++)
+                    if (tab[j] > tab[j + 1])
+                    {
+                        int temp = tab[j];
+                        tab[j] = tab[j + 1];
+                        tab[j + 1] = temp;
+                    }
+            return tab;
+        }
+        string wypisz(int[]tab)
+        {
+            String a = "";
+            for(int i=0;i<tab.Length;i++)
             {
-                components.Dispose();
+                a = a + tab[i];
             }
-            base.Dispose(disposing);
+            return a;
         }
 
-        #region Windows Form Designer generated code
-
-        /// <summary>
-        ///  Required method for Designer support - do not modify
-        ///  the contents of this method with the code editor.
-        /// </summary>
-        private void InitializeComponent()
+        private void Sortuj_Click(object sender, EventArgs e)
         {
-            this.btnstart = new System.Windows.Forms.Button();
-            this.liczba_n = new System.Windows.Forms.NumericUpDown();
-            this.Sortuj = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.liczba_n)).BeginInit();
-            this.SuspendLayout();
-            // 
-            // btnstart
-            // 
-            this.btnstart.BackColor = System.Drawing.Color.Lime;
-            this.btnstart.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnstart.Location = new System.Drawing.Point(253, 152);
-            this.btnstart.Name = "btnstart";
-            this.btnstart.Size = new System.Drawing.Size(155, 38);
-            this.btnstart.TabIndex = 0;
-            this.btnstart.Text = "Start";
-            this.btnstart.UseVisualStyleBackColor = false;
-            // 
-            // liczba_n
-            // 
-            this.liczba_n.Location = new System.Drawing.Point(158, 25);
-            this.liczba_n.Name = "liczba_n";
-            this.liczba_n.Size = new System.Drawing.Size(120, 23);
-            this.liczba_n.TabIndex = 1;
-            // 
-            // Sortuj
-            // 
-            this.Sortuj.Location = new System.Drawing.Point(0, 0);
-            this.Sortuj.Name = "Sortuj";
-            this.Sortuj.Size = new System.Drawing.Size(75, 23);
-            this.Sortuj.TabIndex = 2;
-            // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(88, 99);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 0;
-            this.button1.Text = "button1";
-            this.button1.UseVisualStyleBackColor = true;
-            // 
-            // Form1
-            // 
-            this.ClientSize = new System.Drawing.Size(894, 365);
-            this.Controls.Add(this.button1);
-            this.Controls.Add(this.btnstart);
-            this.Controls.Add(this.liczba_n);
-            this.Controls.Add(this.Sortuj);
-            this.Name = "Form1";
-            ((System.ComponentModel.ISupportInitialize)(this.liczba_n)).EndInit();
-            this.ResumeLayout(false);
-
+            MessageBox.Show(wypisz(sortuj(tab)));
         }
+        /*
+int Fib(int n)
+{
+   if (n == 0)
+       return 0;
+   if (n == 1)
+       return 1;
+   return Fib(n - 1) + Fib(n - 2);
+}
+long Fib2(int n)
+{
+   if (n == 0)
+       return 0;
+   if (n == 1)
+       return 1;
+   long[] wyrazy = new long[n+1];
+  wyrazy[0] = 0;
+  wyrazy[1] = 1;
+  for(int i=2;i<wyrazy.Length;i++)
+   {
+       wyrazy[i] = wyrazy[i - 1] + wyrazy[i - 2];
+   }
+   return wyrazy[n];
+}
+*/
 
-        #endregion
-
-        private Button btnstart;
-        private NumericUpDown liczba_n;
-        private Button Sortuj;
-        private Button button1;
     }
 }
