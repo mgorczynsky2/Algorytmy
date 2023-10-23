@@ -74,3 +74,38 @@ long Fib2(int n)
 
     }
 }
+
+public class Main {
+    public static void main(String[] args) {
+        int[] tab={2,5,1,3,4,7,6};
+        wypisz(sortowaniew(tab));
+
+    }
+    public static void wypisz(int []tab)
+    {
+        for(int i=0;i<tab.length;i++)
+        {
+            System.out.println(tab[i]);
+        }
+    }
+
+    public static int[] sortowaniew(int[] tab) {
+        int min;
+        int pom;
+        for (int i = 0; i < tab.length; i++)
+        {
+            min=i;
+            for(int j=i+1;j<tab.length;j++)
+            {
+                if(tab[j]<tab[min])
+                    min=j;
+            }
+            pom=tab[i];
+            tab[i]=tab[min];
+            tab[min]=pom;
+
+        }
+        return tab;
+    }
+
+}
