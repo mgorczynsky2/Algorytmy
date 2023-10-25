@@ -1,3 +1,4 @@
+using System.Security.Cryptography.X509Certificates;
 
 namespace lab4
 {
@@ -25,7 +26,7 @@ namespace lab4
         }
         public int[] convert(string napis)
         {
-            var liczbyS = napis.Split(' ');
+            var liczbyS = napis.Trim().Split(' ');
             int[] liczby = new int[liczbyS.Length];
             for (int i = 0; i < liczbyS.Length; i++)
             {
@@ -38,21 +39,24 @@ namespace lab4
             string text = string.Join(", ", tab);
             return text;
         }
+        public int minindeks(int[] tab, int start, int koniec)
+        {
+            int min = start;
+            for(int i = start; i < koniec; i++)
+            {
+                if (tab[min]>tab[i])
+                    min = i;
+            }
+            return min;
+        }
         public int [] selectionSort(int[]tab)
         {
             int size = tab.Length;
-            int min;
             int temp;
+            int min;
             for (int i = 0; i < size - 1; i++)
             {
-                min = i;
-                for (int j = i + 1; j < size; j++)
-                {
-                    if (tab[j] < tab[min])
-                    {
-                        min= j;
-                    }
-                }
+                min=minindeks(tab, i, size);
                 temp = tab[i];
                 tab[i] =tab[min];
                 tab[min] = temp;
