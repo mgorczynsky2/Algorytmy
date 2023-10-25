@@ -1,3 +1,4 @@
+
 namespace lab4
 {
     public partial class Form1 : Form
@@ -28,7 +29,7 @@ namespace lab4
             int[] liczby = new int[liczbyS.Length];
             for (int i = 0; i < liczbyS.Length; i++)
             {
-                liczby[i] = Convert.ToInt32(liczbyS[i]);
+                liczby[i] = int.Parse(liczbyS[i]);
             }
             return liczby;
         }
